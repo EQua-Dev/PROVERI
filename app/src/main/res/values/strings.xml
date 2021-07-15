@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">PROVERI</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="menu_verify">Verify Product</string>
+    <string name="menu_history">Previous Search</string>
+    <string name="hint_verify">Enter Product Batch Code</string>
+    <string name="okay_btn">okay</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up_intro_note">First Time?</string>
+    <string name="sign_up_first_name">Username</string>
+    <string name="sign_up_email">Email</string>
+    <string name="sign_up_password">Password</string>
+    <string name="sign_up_confirm_password">Confirm Password</string>
+    <string name="sign_up_button_sign_up">Sign Up</string>
+    <string name="log_in_instead">Already a user? Login Instead</string>
+    <string name="logo_image">Logo Image</string>
+    <string name="log_in_welcome_note">Welcome Back</string>
+    <string name="log_in_password">Password</string>
+    <string name="log_in_button_confirm">Log In</string>
+    <string name="sign_up_text">Create New Account</string>
+    <string name="log_in_forgot_password">Forgot Password?</string>
+    <string name="text_enter_email_for_password_reset">Enter Your Registered Email</string>
+    <string name="text_reset_password">Reset Password</string>
+    <string name="dept_select">Computer Science</string>
+    <string name="menu_yesterday">Yesterday</string>
+    <string name="menu_today">Today</string>
+    <string name="menu_tomorrow">Tomorrow</string>
+    <string name="splash_description">splash image</string>
+    <string name="custom_dialog_title">Verification Result</string>
+
+</resources>

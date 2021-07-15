@@ -1,0 +1,2 @@
+rootProject.name = "PROVERI"
+include ':app'

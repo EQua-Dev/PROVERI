@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/menu_verify"
+        android:id="@+id/menu_verify"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_bookmarks_24"
+        android:title="@string/menu_history"
+        android:id="@+id/menu_history"/>
+
+
+</menu>

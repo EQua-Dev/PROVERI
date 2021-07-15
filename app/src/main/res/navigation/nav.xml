@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/menu_verify">
+
+    <fragment
+        android:id="@+id/menu_verify"
+        android:name="com.androidstrike.proveri.Verify"
+        android:label="@string/menu_verify"
+        tools:layout="@layout/fragment_verify">
+        <action
+            android:id="@+id/action_verify_to_history"
+            app:destination="@id/menu_history"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu_history"
+        android:name="com.androidstrike.proveri.History"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_menu_history_to_menu_verify"
+            app:destination="@id/menu_verify"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+</navigation>

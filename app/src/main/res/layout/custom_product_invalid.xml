@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/iv_save_invalid"
+        android:src="@drawable/ic_baseline_bookmark_add_24"
+        android:layout_gravity="end"
+        android:layout_margin="12dp"/>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_margin="4dp"
+        android:id="@+id/prod_img_invalid"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:padding="4dp"
+        android:background="#070"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:padding="12dp"
+        android:layout_margin="12dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/big_padding"
+        android:id="@+id/txt_not_valid"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#070"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/okay_btn"
+            android:backgroundTint="#700"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:id="@+id/btn_not_okay"/>
+
+    </LinearLayout>
+
+</LinearLayout>
