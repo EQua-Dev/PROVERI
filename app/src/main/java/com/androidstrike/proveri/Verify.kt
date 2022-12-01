@@ -11,10 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -37,6 +34,10 @@ class Verify : Fragment() {
 
     private val productsCollectionRef = Firebase.firestore.collection("products")
     private lateinit var mChecksViewModel: ChecksViewModel
+    lateinit var capturedImageView: ImageView
+
+    val REQUEST_CODE = 200
+
 
 
     override fun onCreateView(
@@ -47,11 +48,16 @@ class Verify : Fragment() {
         val view = inflater.inflate(R.layout.fragment_verify, container, false)
 
         mChecksViewModel = ViewModelProvider(this).get(ChecksViewModel::class.java)
+
+        capturedImageView = view.iv_captured_image
+
         view.btnVerify.setOnClickListener {
             retrievePersons()
         }
         return view
     }
+
+
 
     private fun retrievePersons() = CoroutineScope(Dispatchers.IO).launch {
 
@@ -135,24 +141,32 @@ class Verify : Fragment() {
         val btnOkay = dialog.findViewById<Button>(R.id.btn_not_okay)
         val ivSaved = dialog.findViewById<ImageView>(R.id.iv_save_invalid)
         val ivProd = dialog.findViewById<ImageView>(R.id.prod_img_invalid)
+        val etProdReview = dialog.findViewById<EditText>(R.id.et_product_review)
+
+
 
         ivProd.setImageResource(R.drawable.ic_baseline_cancel_24)
         invalidTxt.append("The Product with\n\n batch number: $productCode\n\n is NOT valid!!")
 
+        val batchNumberDB = productCode.toString()
+        val productNameDB = "N/A"
+        val mfgNameDB = "N/A"
+        val prodDateDB = "N/A"
+        val expDateDB = "N/A"
+        val review = etProdReview.text.toString()
+        val isValid = false
+
         ivSaved.setOnClickListener {
-            val batchNumberDB = productCode.toString()
-            val productNameDB = "N/A"
-            val mfgNameDB = "N/A"
-            val prodDateDB = "N/A"
-            val expDateDB = "N/A"
-            val isValid = false
-            insertCheckToDB(batchNumberDB,productNameDB,mfgNameDB,prodDateDB,expDateDB,isValid)
+
+            insertCheckToDB(batchNumberDB,productNameDB,mfgNameDB,prodDateDB,expDateDB,review,isValid)
             ivSaved.setImageResource(R.drawable.ic_bookmark_added_24)
             findNavController().navigate(R.id.action_verify_to_history)
             dialog.dismiss()
         }
 
         btnOkay.setOnClickListener {
+            insertCheckToDB(batchNumberDB,productNameDB,mfgNameDB,prodDateDB,expDateDB,review,isValid)
+
             findNavController().navigate(R.id.action_verify_to_history)
 
             dialog.dismiss()
@@ -187,6 +201,7 @@ class Verify : Fragment() {
         val btnOkay = dialog.findViewById<Button>(R.id.btn_okay)
         val ivSaved = dialog.findViewById<ImageView>(R.id.iv_save)
         val ivProd = dialog.findViewById<ImageView>(R.id.prod_img)
+        val etProductReview = dialog.findViewById<EditText>(R.id.et_valid_product_review)
 
 
         productName.text = product.prod_name.toString()
@@ -200,18 +215,36 @@ class Verify : Fragment() {
         val mfgNameDB = product.mfg_name.toString()
         val prodDateDB = product.prod_date.toString()
         val expDateDB = product.exp_date.toString()
+        val review = etProductReview.text.toString().trim()
         val isValid = true
 
         ivProd.setImageResource(R.drawable.ic_baseline_verified_24)
 
         ivSaved.setOnClickListener {
-            insertCheckToDB(batchNumberDB,productNameDB,mfgNameDB,prodDateDB,expDateDB,isValid)
+            insertCheckToDB(
+                batchNumberDB,
+                productNameDB,
+                mfgNameDB,
+                prodDateDB,
+                expDateDB,
+                review,
+                isValid
+            )
             ivSaved.setImageResource(R.drawable.ic_bookmark_added_24)
             findNavController().navigate(R.id.action_verify_to_history)
             dialog.dismiss()
         }
 
         btnOkay.setOnClickListener {
+            insertCheckToDB(
+                batchNumberDB,
+                productNameDB,
+                mfgNameDB,
+                prodDateDB,
+                expDateDB,
+                review,
+                isValid
+            )
             findNavController().navigate(R.id.action_verify_to_history)
             dialog.dismiss()
             Toast.makeText(context, "Valid!!", Toast.LENGTH_SHORT).show()
@@ -219,8 +252,16 @@ class Verify : Fragment() {
         dialog.show()
     }
 
-    private fun insertCheckToDB(batchNumberDB: String, productNameDB: String, mfgNameDB: String, prodDateDB: String, expDateDB: String, isValid: Boolean) {
-        val check = DBModel(batchNumberDB,productNameDB,mfgNameDB,prodDateDB,expDateDB,isValid)
+    private fun insertCheckToDB(
+        batchNumberDB: String,
+        productNameDB: String,
+        mfgNameDB: String,
+        prodDateDB: String,
+        expDateDB: String,
+        review: String,
+        isValid: Boolean
+    ) {
+        val check = DBModel(batchNumberDB,productNameDB,mfgNameDB,prodDateDB,expDateDB,review,isValid)
         mChecksViewModel.insertCheck(check)
         Toast.makeText(requireContext(), "Saved!", Toast.LENGTH_SHORT).show()
     }

@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PROVERI"
         >
-        <activity android:name=".auth.AuthActivity">
+        <activity android:name=".auth.AuthActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

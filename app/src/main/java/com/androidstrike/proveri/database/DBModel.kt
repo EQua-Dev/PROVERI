@@ -17,5 +17,6 @@ class DBModel(
 //    @ColumnInfo(name = "prod_name")
     var prod_date: String,
     var exp_date: String,
+    var prod_review: String,
     var is_valid: Boolean
 )

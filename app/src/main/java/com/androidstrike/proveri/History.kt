@@ -1,5 +1,6 @@
 package com.androidstrike.proveri
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,7 +25,7 @@ class History : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_history, container, false)
-        val adapter = ChecksAdapter()
+        val adapter = ChecksAdapter(requireContext())
         val recyclerView = view.rv_history
         val layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter

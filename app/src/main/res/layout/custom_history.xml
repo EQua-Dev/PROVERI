@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:orientation="vertical">
 
             <TextView
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="#334GH334"
+                tools:text="#334GH334"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -33,7 +33,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
-                android:text="Text Product"
+                tools:text="Text Product"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_prod_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                tools:text="Text Product"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -42,7 +51,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:layout_weight="1">
+            android:orientation="vertical"
+            android:layout_weight="2">
 
             <ImageView
                 android:id="@+id/img_verified"
@@ -50,6 +60,16 @@
                 android:layout_height="wrap_content"
                 android:padding="12dp"
                 android:src="@drawable/ic_baseline_verified_24" />
+
+            <TextView
+                android:id="@+id/txt_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textAlignment="center"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:text="Report Product"
+                android:drawableStart="@drawable/ic_report" />
 
 
         </LinearLayout>
